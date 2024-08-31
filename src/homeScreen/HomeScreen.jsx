@@ -1,9 +1,11 @@
 import React from 'react';
 import {motion} from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const HomeScreen = () => {
+  const nav = useNavigate();
   function gotoLogin(){
-    window.location.href = "/login";
+    nav('/login');
   }
   return (
     <div className='row landing'>

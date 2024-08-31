@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Loginpage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const nav = useNavigate();
 
     async function login() {
         if (email === '' || password === '') {
@@ -21,7 +23,7 @@ const Loginpage = () => {
 
             console.log(result.data);
             localStorage.setItem('currentUser', JSON.stringify(result.data));
-            window.location.href = '/home';
+            nav('/home');
         } catch (error) {
             console.error(error);
             alert('Login failed. Please check your credentials and try again.');

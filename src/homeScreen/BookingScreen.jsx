@@ -7,6 +7,9 @@ import Error from '../components/Error';
 import moment from 'moment';
 import StripeCheckout from 'react-stripe-checkout';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+
+// const nav = useNavigate();
 
 const BookingScreen = ({ match }) => {
   const { roomid,fromdate,todate} = useParams();
@@ -39,6 +42,7 @@ const BookingScreen = ({ match }) => {
   
 
   async function onToken(token){
+    const nav = useNavigate();
     const bookingDetails = {
       room,
       userid: JSON.parse(localStorage.getItem('currentUser'))._id,
@@ -55,7 +59,7 @@ const BookingScreen = ({ match }) => {
       setLoading(false);
       Swal.fire("Congratulation..",'Your room Booked Successfully','success').then(
         () => {
-          window.location.href = '/profile';
+          nav('/profile');
         });
     } catch (error) {
       setLoading(false);

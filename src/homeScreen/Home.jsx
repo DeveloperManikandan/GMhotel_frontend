@@ -7,8 +7,9 @@ import { DatePicker } from 'antd';
 const { RangePicker } = DatePicker;
 import moment from 'moment';
 
-const Home = () => {
 
+const Home = () => {
+ 
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

@@ -3,12 +3,14 @@ import { Tabs,Tag } from 'antd';
 import axios from 'axios';
 import Loader from '../components/Loader';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
+    const nav = useNavigate();
     const userdetails = JSON.parse(localStorage.getItem('currentUser'));
     useEffect(() => {
         if (!userdetails) {
-            window.location.href = '/login';
+            nav('/login');
         }
     }, [userdetails]);
 

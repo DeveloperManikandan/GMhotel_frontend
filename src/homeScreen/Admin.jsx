@@ -3,12 +3,14 @@ import { Tabs, Tag } from 'antd';
 import axios from 'axios';
 import Loader from '../components/Loader';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const Admin = () => {
+    const nav = useNavigate();
 
     useEffect(() => {
         if (!JSON.parse(localStorage.getItem('currentUser')).isAdmin) {
-            window.location.href = '/home';
+            nav('/home');
         }
     }, [])
 
@@ -235,7 +237,7 @@ export function AddRoom() {
         setType('');
         setDescription('');
             setLoading(false);
-            Swal.fire("Congratulation",'Room added successfully','success').then(window.location.reload());
+            Swal.fire("Congratulation",'Room added successfully','success');
         } catch (error) {
             console.error('Error adding room details:', error);
             Swal.fire("Oopss..",'Something went wrong','error');

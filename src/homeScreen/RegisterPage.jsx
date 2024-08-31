@@ -2,8 +2,10 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import Loader from '../components/Loader';
 import Success from '../components/Success';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
+    const nav = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -35,6 +37,7 @@ const RegisterPage = () => {
               setEmail('');
               setPassword('');
               setCpassword('');
+            //   nav('/login');
               
         }
         else {

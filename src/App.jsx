@@ -12,8 +12,8 @@ import HomeScreen from './homeScreen/HomeScreen';
 const App = () => {
   return (
     <div className='App'>
-      <Navbar />
       <Router>
+      <Navbar />
       <Routes>
       <Route path="/" element={<HomeScreen />} />
       <Route path="/home" element={<Home/>} />

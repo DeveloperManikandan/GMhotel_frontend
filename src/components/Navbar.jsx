@@ -1,11 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('currentUser'));
 
   function logout(){
     localStorage.removeItem('currentUser');
-    window.location.href='/login'
+    navigate('/login');
   }
 
   return (
@@ -26,8 +28,8 @@ const Navbar = () => {
                     <i className="fa fa-user" aria-hidden="true"></i> {user.name}
                     </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a className="dropdown-item" href="/profile">Profile</a></li>
-                      {user.isAdmin ? (<li><a className="dropdown-item" href="/admin">Admin</a></li>):<></>}
+                      <li><a className="dropdown-item" onClick={()=>navigate('/profile')}>Profile</a></li>
+                      {user.isAdmin ? (<li><a className="dropdown-item" onClick={()=>navigate('/admin')}>Admin</a></li>):<></>}
                       <li><a className="dropdown-item" href="#" onClick={logout}>Logout</a></li>
                     </ul>
                   </div>
